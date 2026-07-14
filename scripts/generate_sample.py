@@ -1,0 +1,123 @@
+"""Generates assets/sample_input.xlsx with 25 realistic call-summary scenarios.
+
+Run with: python scripts/generate_sample.py
+"""
+
+import os
+
+import pandas as pd
+
+OUTPUT_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets", "sample_input.xlsx")
+
+ROWS = [
+    dict(customer_name="Anita Sharma", mobile="9876500001", campaign_name="Health Camp Q3", service_type="Free Consultation",
+         disposition="Connected", interested="Yes", callback_request="No", booking_date="2026-07-15", booking_time="10:00 AM",
+         call_duration=145, language="Hindi",
+         summary="Customer is ready to book and wants to schedule the earliest available slot for the free consultation."),
+    dict(customer_name="Ravi Kumar", mobile="9876500002", campaign_name="Health Camp Q3", service_type="Free Consultation",
+         disposition="Connected", interested="Yes", callback_request="Yes", booking_date="", booking_time="",
+         call_duration=98, language="English",
+         summary="Customer explicitly interested and asked for a callback tomorrow evening to finalize the booking."),
+    dict(customer_name="Sunita Verma", mobile="9876500003", campaign_name="Health Camp Q3", service_type="Body Checkup",
+         disposition="Connected", interested="No", callback_request="No", booking_date="", booking_time="",
+         call_duration=40, language="Hindi",
+         summary="Customer said not interested and declined the offer."),
+    dict(customer_name="Wrong Contact", mobile="9876500004", campaign_name="Health Camp Q3", service_type="Body Checkup",
+         disposition="Wrong Number", interested="", callback_request="", booking_date="", booking_time="",
+         call_duration=12, language="",
+         summary="This is the wrong number, please remove this number from your list."),
+    dict(customer_name="Deepak Nair", mobile="9876500005", campaign_name="Wellness Drive", service_type="Dental Checkup",
+         disposition="Connected", interested="Yes", callback_request="No", booking_date="2026-07-18", booking_time="4:00 PM",
+         call_duration=180, language="English",
+         summary="Customer wants to book and confirmed the appointment for a convenient slot next week."),
+    dict(customer_name="Meera Iyer", mobile="9876500006", campaign_name="Wellness Drive", service_type="Dental Checkup",
+         disposition="Connected", interested="", callback_request="No", booking_date="", booking_time="",
+         call_duration=55, language="Tamil",
+         summary="Customer's preferred slot was unavailable and there was a technical issue while booking online."),
+    dict(customer_name="Suresh Babu", mobile="9876500007", campaign_name="Wellness Drive", service_type="Eye Checkup",
+         disposition="DNC Request", interested="No", callback_request="No", booking_date="", booking_time="",
+         call_duration=20, language="Telugu",
+         summary="Customer asked us to stop calling and requested we do not call again."),
+    dict(customer_name="Priya Menon", mobile="9876500008", campaign_name="Wellness Drive", service_type="Eye Checkup",
+         disposition="Connected", interested="Yes", callback_request="No", booking_date="", booking_time="",
+         call_duration=130, language="Malayalam",
+         summary="Customer is very interested and wants to know more about the offer before deciding on price."),
+    dict(customer_name="Amit Joshi", mobile="9876500009", campaign_name="Diabetes Screening", service_type="Diabetes Screening",
+         disposition="Connected", interested="", callback_request="", booking_date="", booking_time="",
+         call_duration=35, language="Hindi",
+         summary="Customer did not understand the offer and asked what this consultation was about."),
+    dict(customer_name="Kavita Rao", mobile="9876500010", campaign_name="Diabetes Screening", service_type="Diabetes Screening",
+         disposition="Connected", interested="", callback_request="", booking_date="", booking_time="",
+         call_duration=25, language="Kannada",
+         summary="Customer said it is too expensive and is not sure this is genuine, sounds like a scam."),
+    dict(customer_name="Not The Customer", mobile="9876500011", campaign_name="Diabetes Screening", service_type="Diabetes Screening",
+         disposition="Invalid Contact", interested="", callback_request="", booking_date="", booking_time="",
+         call_duration=15, language="",
+         summary="This is not the customer, a different person answered the call."),
+    dict(customer_name="Rajesh Pillai", mobile="9876500012", campaign_name="Diabetes Screening", service_type="Diabetes Screening",
+         disposition="Connected", interested="Yes", callback_request="No", booking_date="2026-07-20", booking_time="9:00 AM",
+         call_duration=200, language="English",
+         summary="Customer confirmed booking and shared address and pincode for the home sample collection."),
+    dict(customer_name="Geetha Shetty", mobile="9876500013", campaign_name="Renewal Drive", service_type="Annual Health Plan",
+         disposition="Connected", interested="", callback_request="", booking_date="", booking_time="",
+         call_duration=48, language="Hindi",
+         summary="Customer already availed this benefit earlier this year and rebooking is not allowed."),
+    dict(customer_name="Manoj Tiwari", mobile="9876500014", campaign_name="Renewal Drive", service_type="Annual Health Plan",
+         disposition="Not Reachable", interested="", callback_request="", booking_date="", booking_time="",
+         call_duration=0, language="",
+         summary="Customer number switched off, not reachable after multiple attempts."),
+    dict(customer_name="Lakshmi Pai", mobile="9876500015", campaign_name="Renewal Drive", service_type="Annual Health Plan",
+         disposition="Voicemail", interested="", callback_request="", booking_date="", booking_time="",
+         call_duration=8, language="",
+         summary="Call went to voicemail, no response from customer."),
+    dict(customer_name="Farhan Ali", mobile="9876500016", campaign_name="Renewal Drive", service_type="Annual Health Plan",
+         disposition="Connected", interested="", callback_request="", booking_date="", booking_time="",
+         call_duration=30, language="Urdu",
+         summary="Customer had a language issue and did not speak the language, needs a Hindi speaking agent."),
+    dict(customer_name="Neha Kapoor", mobile="9876500017", campaign_name="Doctor Outreach", service_type="Teleconsultation",
+         disposition="Connected", interested="Yes", callback_request="Yes", booking_date="", booking_time="",
+         call_duration=110, language="English",
+         summary="Customer requested booking and asked to send the link on WhatsApp for the teleconsultation."),
+    dict(customer_name="Vikram Singh", mobile="9876500018", campaign_name="Doctor Outreach", service_type="Teleconsultation",
+         disposition="Disconnected", interested="", callback_request="", booking_date="", booking_time="",
+         call_duration=5, language="",
+         summary="Customer hung up shortly after the call connected, call was disconnected by customer."),
+    dict(customer_name="Sneha Reddy", mobile="9876500019", campaign_name="Doctor Outreach", service_type="Teleconsultation",
+         disposition="Connected", interested="", callback_request="", booking_date="", booking_time="",
+         call_duration=60, language="Telugu",
+         summary="Customer has a complaint about poor service received earlier and is unhappy with the previous visit."),
+    dict(customer_name="Arjun Das", mobile="9876500020", campaign_name="Doctor Outreach", service_type="Teleconsultation",
+         disposition="Connected", interested="", callback_request="", booking_date="", booking_time="",
+         call_duration=45, language="Bengali",
+         summary="Customer is waiting for the report which is delayed and wants an updated timeline."),
+    dict(customer_name="Pooja Malhotra", mobile="9876500021", campaign_name="Home Service", service_type="Technician Visit",
+         disposition="Connected", interested="", callback_request="", booking_date="", booking_time="",
+         call_duration=52, language="Hindi",
+         summary="Customer mentioned the technician did not arrive and is waiting for the technician visit."),
+    dict(customer_name="Karthik Subramanian", mobile="9876500022", campaign_name="Home Service", service_type="Technician Visit",
+         disposition="Connected", interested="Yes", callback_request="No", booking_date="2026-07-16", booking_time="Morning",
+         call_duration=165, language="Tamil",
+         summary="Customer confirmed booking and preferred the morning slot on Monday."),
+    dict(customer_name="Divya Krishnan", mobile="9876500023", campaign_name="Home Service", service_type="Technician Visit",
+         disposition="Connected", interested="", callback_request="", booking_date="", booking_time="",
+         call_duration=70, language="Malayalam",
+         summary="Customer already has an appointment booked for next week and does not need another one."),
+    dict(customer_name="Sanjay Gupta", mobile="9876500024", campaign_name="Home Service", service_type="Technician Visit",
+         disposition="Not Eligible", interested="", callback_request="", booking_date="", booking_time="",
+         call_duration=33, language="Hindi",
+         summary="Customer is not eligible for this service based on the plan details shared."),
+    dict(customer_name="Ritu Chawla", mobile="9876500025", campaign_name="Home Service", service_type="Technician Visit",
+         disposition="Connected", interested="", callback_request="", booking_date="", booking_time="",
+         call_duration=15, language="",
+         summary="Customer was silent throughout the call, no audio from customer, unresponsive call."),
+]
+
+def main() -> None:
+    df = pd.DataFrame(ROWS)
+    os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
+    df.to_excel(OUTPUT_PATH, index=False, engine="openpyxl")
+    print(f"Wrote {len(df)} sample rows to {OUTPUT_PATH}")
+
+
+if __name__ == "__main__":
+    main()

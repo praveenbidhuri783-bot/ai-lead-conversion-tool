@@ -1,0 +1,38 @@
+{
+  "exclusion_pitch": "No further sales pitch recommended.",
+
+  "pitch_by_priority": {
+    "P1": "You had shown interest in the complimentary consultation. I can complete the booking now. Would you prefer the earliest available slot or your preferred date and time?",
+    "P2": "This consultation is available under your health benefit. I can reserve either the earliest available slot or a time convenient for you. Which option should I confirm?",
+    "P3": "This complimentary consultation is available under your health benefit. When would be a good time for us to call you back and help you book a convenient slot?",
+    "P4": "No further sales pitch recommended."
+  },
+
+  "pitch_by_objection": {
+    "Timing or Callback": "As requested, I am calling back to help complete your booking. Would today evening or tomorrow morning be more convenient?",
+    "Slot Availability": "Your preferred slot was unavailable earlier. I now have alternate options and can confirm one immediately. Which timing would be most convenient?",
+    "Technical Issue": "I understand there was a technical issue while booking earlier. I can complete this manually for you right now. Shall we proceed?",
+    "Price Concern": "Before you decide, let me explain the benefits and savings available under your plan. This may reduce or eliminate your out-of-pocket cost.",
+    "Trust Concern": "This call is regarding a benefit available under your registered health plan. We will use only the minimum required information to confirm eligibility and complete the service.",
+    "Offer Not Understood": "This is a complimentary consultation included in your health benefit. There is no consultation charge. May I book a suitable slot for you?",
+    "Language Barrier": "Reconnect with the customer in their preferred language and explain the benefit in one simple sentence before requesting consent.",
+    "Not Interested": "No further sales pitch recommended.",
+    "Already Availed": "No further sales pitch recommended.",
+    "Wrong or Invalid Number": "No further sales pitch recommended.",
+    "Eligibility Issue": "No further sales pitch recommended.",
+    "Early Disconnect": "Reconnect with the customer, briefly reintroduce the benefit, and confirm a convenient time to talk.",
+    "Unresponsive": "Attempt contact through an alternate channel such as WhatsApp or SMS before the next call attempt.",
+    "Service Complaint": "First acknowledge and resolve the existing concern. Do not attempt a new conversion pitch until the customer confirms that the issue is resolved.",
+    "Report Delay": "Acknowledge the delay, provide an updated timeline for the report, and offer to follow up once it is ready.",
+    "Technician Delay": "Acknowledge the delay in the technician visit, apologise for the inconvenience, and offer the next available appointment.",
+    "No Major Objection": ""
+  },
+
+  "pitch_by_service": {
+    "default": ""
+  },
+
+  "pitch_by_language": {
+    "default": ""
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "summary_column_aliases": [
+    "SUMMARY",
+    "summary",
+    "call_summary",
+    "conversation_summary",
+    "ai_summary",
+    "remarks",
+    "description",
+    "transcript",
+    "agent_summary",
+    "call remarks",
+    "call_remarks",
+    "call_notes",
+    "notes"
+  ],
+
+  "optional_column_aliases": {
+    "campaign_id": ["campaign_id", "campaignid", "campaign id"],
+    "campaign_name": ["campaign_name", "campaign", "campaign name"],
+    "customer_id": ["customer_id", "cust_id", "customerid", "customer id"],
+    "customer_name": ["customer_name", "name", "customer", "customer name"],
+    "phone_number": ["phone_number", "phone", "contact_number", "phone number"],
+    "mobile": ["mobile", "mobile_number", "mobile no", "mobile no."],
+    "disposition": ["disposition", "call_disposition", "call disposition"],
+    "interested": ["interested", "is_interested", "interest_flag"],
+    "callback_request": ["callback_request", "callback_requested", "callback", "callback request"],
+    "callback_date": ["callback_date", "callback date"],
+    "callback_time": ["callback_time", "callback time"],
+    "booking_date": ["booking_date", "appointment_date", "booking date"],
+    "booking_time": ["booking_time", "appointment_time", "booking time"],
+    "slot_technical_issue": ["slot_technical_issue", "technical_issue", "slot technical issue"],
+    "call_duration": ["call_duration", "duration", "call_duration_seconds", "duration_seconds", "call duration"],
+    "language": ["language", "preferred_language", "call_language"],
+    "service_type": ["service_type", "service", "service type"],
+    "product": ["product"],
+    "partner": ["partner"],
+    "agent_name": ["agent_name", "agent", "agent name"],
+    "call_status": ["call_status", "status", "call status"]
+  }
+}

@@ -1,0 +1,11 @@
+streamlit>=1.35,<2.0
+pandas>=2.0,<3.0
+openpyxl>=3.1,<4.0
+xlrd>=2.0,<3.0
+plotly>=5.20,<6.0
+python-dateutil>=2.8,<3.0
+pytest>=7.4,<9.0
+
+# Optional - only required if "Use Advanced AI Analysis" is enabled
+anthropic>=0.34,<1.0
+openai>=1.30,<2.0

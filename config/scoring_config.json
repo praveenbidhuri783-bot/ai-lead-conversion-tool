@@ -1,0 +1,241 @@
+{
+  "scoring_version": "1.0.0",
+  "base_score": 25,
+  "score_min": 0,
+  "score_max": 100,
+
+  "positive_signals": {
+    "interested_flag_true": {
+      "score": 35,
+      "source": "column",
+      "column": "interested",
+      "match_values": ["true", "yes", "y", "1", "interested"]
+    },
+    "callback_requested_flag": {
+      "score": 22,
+      "source": "column",
+      "column": "callback_request",
+      "match_values": ["true", "yes", "y", "1", "requested"]
+    },
+    "booking_date_captured": {
+      "score": 20,
+      "source": "column",
+      "column": "booking_date"
+    },
+    "booking_time_captured": {
+      "score": 15,
+      "source": "column",
+      "column": "booking_time"
+    },
+    "slot_technical_issue_flag": {
+      "score": 12,
+      "source": "column",
+      "column": "slot_technical_issue",
+      "match_values": ["true", "yes", "y", "1"]
+    },
+    "explicitly_interested": {
+      "score": 22,
+      "source": "keyword",
+      "keywords": ["very interested", "definitely interested", "keen to book", "explicitly interested", "extremely interested", "genuinely interested"]
+    },
+    "wants_to_book": {
+      "score": 25,
+      "source": "keyword",
+      "keywords": ["wants to book", "want to book", "would like to book", "wants to schedule", "want to schedule", "wants an appointment"]
+    },
+    "ready_to_book": {
+      "score": 28,
+      "source": "keyword",
+      "keywords": ["ready to book", "ready to proceed", "ready to schedule", "confirmed booking", "confirmed the booking", "agreed to book"]
+    },
+    "requested_booking": {
+      "score": 25,
+      "source": "keyword",
+      "keywords": ["requested booking", "requested a booking", "asked to book", "requested an appointment", "asked for an appointment"]
+    },
+    "asked_for_callback": {
+      "score": 18,
+      "source": "keyword",
+      "keywords": ["asked for a callback", "asked to call back", "requested a callback", "requested callback", "call back later", "call me back"]
+    },
+    "asked_to_send_link": {
+      "score": 14,
+      "source": "keyword",
+      "keywords": ["send the link", "share the link", "send link", "whatsapp the link", "send me the link", "share a link"]
+    },
+    "preferred_slot_mentioned": {
+      "score": 12,
+      "source": "keyword",
+      "keywords": ["preferred slot", "preferred time slot", "specific slot", "particular slot"]
+    },
+    "preferred_time_mentioned": {
+      "score": 10,
+      "source": "keyword",
+      "keywords": ["preferred time", "convenient time", "suitable time", "good time to call"]
+    },
+    "customer_said_yes": {
+      "score": 5,
+      "source": "keyword",
+      "keywords": ["customer said yes", "said yes", "okay sure", "sure, okay", "yes please", "yes, please"]
+    },
+    "address_or_location_shared": {
+      "score": 5,
+      "source": "keyword",
+      "keywords": ["shared address", "provided address", "pincode", "pin code", "shared location", "provided location"]
+    },
+    "specific_day_or_time_mentioned": {
+      "score": 7,
+      "source": "keyword",
+      "keywords": ["tomorrow", "today evening", "this evening", "next week", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday", "morning slot", "afternoon slot", "evening slot"]
+    }
+  },
+
+  "call_duration_signals": {
+    "column": "call_duration",
+    "above_120_score": 8,
+    "range_60_119_score": 5
+  },
+
+  "negative_signals": {
+    "wrong_number": { "score": -60, "keywords": ["wrong number", "incorrect number", "not the right number"] },
+    "not_the_customer": { "score": -55, "keywords": ["not the customer", "different person", "not the intended person", "someone else's number", "not the concerned person"] },
+    "stop_calling": { "score": -60, "keywords": ["stop calling", "please stop calling", "do not call again"] },
+    "do_not_call": { "score": -60, "keywords": ["do not call", "don't call", "dnd", "remove my number", "remove this number"] },
+    "not_interested": { "score": -45, "keywords": ["not interested", "no interest", "not required", "don't need", "not needed"] },
+    "refused": { "score": -35, "keywords": ["refused", "refused to", "declined to share"] },
+    "declined": { "score": -35, "keywords": ["declined", "declined the offer", "declined the service"] },
+    "hung_up": { "score": -25, "keywords": ["hung up", "customer hung up", "call was disconnected by customer"] },
+    "disconnected": { "score": -22, "keywords": ["disconnected", "call dropped", "line disconnected"] },
+    "unresponsive": { "score": -25, "keywords": ["unresponsive", "did not respond", "no response from customer"] },
+    "silent_call": { "score": -18, "keywords": ["silent call", "customer was silent", "no audio from customer"] },
+    "voicemail": { "score": -30, "keywords": ["voicemail", "went to voicemail", "reached voicemail"] },
+    "switched_off": { "score": -30, "keywords": ["switched off", "phone switched off", "number switched off"] },
+    "not_reachable": { "score": -30, "keywords": ["not reachable", "could not be reached", "unreachable"] },
+    "very_short_call": { "score": -12, "keywords": ["very short call", "call ended quickly", "immediately disconnected"] },
+    "did_not_understand": { "score": -10, "keywords": ["did not understand", "didn't understand", "could not understand the offer"] },
+    "language_issue": { "score": -5, "keywords": ["language issue", "language barrier", "did not speak the language", "language problem"] },
+    "already_availed": { "score": -18, "keywords": ["already availed", "already used the benefit", "already taken this service"] },
+    "already_booked": { "score": -20, "keywords": ["already booked", "already has an appointment", "already scheduled"] },
+    "not_eligible": { "score": -45, "keywords": ["not eligible", "ineligible", "does not qualify", "doesn't qualify"] },
+    "invalid_data": { "score": -45, "keywords": ["invalid data", "invalid lead", "incorrect data", "data mismatch"] }
+  },
+
+  "hard_exclusions": {
+    "wrong_number": {
+      "reason": "Wrong number",
+      "keywords": ["wrong number", "incorrect number", "not the right number"]
+    },
+    "not_intended_customer": {
+      "reason": "Not the intended customer",
+      "keywords": ["not the customer", "different person", "not the intended person", "someone else's number", "not the concerned person"]
+    },
+    "do_not_call_request": {
+      "reason": "Customer requested no further calls",
+      "keywords": ["do not call", "don't call", "stop calling", "dnd", "remove my number", "remove this number"]
+    },
+    "not_interested": {
+      "reason": "Explicitly not interested",
+      "keywords": ["not interested", "no interest at all", "not required", "don't need this"]
+    },
+    "not_eligible": {
+      "reason": "Not eligible",
+      "keywords": ["not eligible", "ineligible", "does not qualify", "doesn't qualify"]
+    },
+    "fraud_or_invalid": {
+      "reason": "Fraud or invalid lead",
+      "keywords": ["fraud", "invalid lead", "fake lead", "fake number"]
+    },
+    "duplicate_completed_transaction": {
+      "reason": "Duplicate record with completed transaction",
+      "source": "column",
+      "column": "disposition",
+      "match_values": ["duplicate", "already transacted", "completed - duplicate", "duplicate - completed"]
+    },
+    "already_availed_no_rebooking": {
+      "reason": "Already availed benefit, rebooking not allowed",
+      "keywords": ["already availed", "rebooking not allowed", "cannot rebook", "already used the benefit and cannot rebook"]
+    }
+  },
+
+  "priority_thresholds": {
+    "P1_hot_min": 75,
+    "P2_warm_min": 55,
+    "P3_nurture_min": 35,
+    "P4_exclude_max": 34
+  },
+
+  "sentiment_thresholds": {
+    "positive_min": 75,
+    "neutral_positive_min": 55,
+    "neutral_min": 35,
+    "neutral_negative_min": 20
+  },
+
+  "sentiment_negative_override_exclusions": ["wrong_number", "not_intended_customer", "do_not_call_request", "not_interested", "fraud_or_invalid"],
+
+  "sla_rules": {
+    "P1": {
+      "label": "P1 - Hot",
+      "follow_up_time": "Within 30 minutes",
+      "action": "Agent call within 30 minutes; attempt immediate booking or transaction completion",
+      "channel": "Call"
+    },
+    "P2": {
+      "label": "P2 - Warm",
+      "follow_up_time": "Within 4 hours",
+      "action": "Agent follow-up within 4 hours using benefit-led pitch and two specific booking options",
+      "channel": "Call"
+    },
+    "P3": {
+      "label": "P3 - Nurture",
+      "follow_up_time": "Within 24-48 hours",
+      "action": "Send WhatsApp or SMS and retry once within 24-48 hours with simplified, personalised communication",
+      "channel": "WhatsApp/SMS"
+    },
+    "P4": {
+      "label": "P4 - Exclude",
+      "follow_up_time": "Not applicable",
+      "action": "Do not prioritise for agent calling; suppress, validate, or remove based on exclusion type",
+      "channel": "None"
+    }
+  },
+
+  "objection_priority_order": [
+    "Wrong or Invalid Number",
+    "Not Interested",
+    "Eligibility Issue",
+    "Already Availed",
+    "Service Complaint",
+    "Technical Issue",
+    "Slot Availability",
+    "Timing or Callback",
+    "Price Concern",
+    "Trust Concern",
+    "Offer Not Understood",
+    "Language Barrier",
+    "Report Delay",
+    "Technician Delay",
+    "Early Disconnect",
+    "Unresponsive",
+    "No Major Objection"
+  ],
+
+  "objection_keywords": {
+    "Timing or Callback": ["call back", "callback", "busy right now", "call me later", "call later", "not a good time", "in a meeting"],
+    "Slot Availability": ["slot not available", "no slots available", "preferred slot unavailable", "slot full", "slot was unavailable"],
+    "Technical Issue": ["technical issue", "system error", "booking failed", "link not working", "payment failed", "could not book", "app not working", "website error"],
+    "Price Concern": ["too expensive", "price concern", "cost concern", "cannot afford", "costly", "high price", "not free"],
+    "Trust Concern": ["trust concern", "is this genuine", "sounds like a scam", "not sure this is real", "how do i know this is genuine", "suspicious call"],
+    "Offer Not Understood": ["did not understand the offer", "what is this about", "not clear about the offer", "confused about the offer", "explain the offer"],
+    "Language Barrier": ["language issue", "language barrier", "did not speak the language", "language problem", "does not understand english", "needs hindi"],
+    "Not Interested": ["not interested", "no interest", "not required", "don't need this"],
+    "Already Availed": ["already availed", "already used the benefit", "already taken this service", "already completed this"],
+    "Wrong or Invalid Number": ["wrong number", "incorrect number", "not the customer", "different person"],
+    "Eligibility Issue": ["not eligible", "ineligible", "does not qualify", "doesn't qualify"],
+    "Early Disconnect": ["hung up", "call dropped", "disconnected", "line disconnected"],
+    "Unresponsive": ["unresponsive", "did not respond", "no response from customer", "silent call"],
+    "Service Complaint": ["complaint", "unhappy with", "poor service", "bad experience", "dissatisfied", "issue with the service already received"],
+    "Report Delay": ["report delay", "report not received", "waiting for the report", "report is delayed"],
+    "Technician Delay": ["technician delay", "technician did not arrive", "technician late", "waiting for technician"]
+  }
+}

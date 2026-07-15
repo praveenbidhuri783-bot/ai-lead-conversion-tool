@@ -1,0 +1,23 @@
+<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle logoDesc">
+  <title id="logoTitle">AI Lead Sentiment &amp; Conversion Scoring Tool logo</title>
+  <desc id="logoDesc">A rounded square mark with a call-bubble icon and an upward conversion arrow.</desc>
+
+  <rect x="8" y="8" width="224" height="224" rx="48" fill="#1E2A78"/>
+
+  <path d="M76 92
+           a44 44 0 1 1 12 62
+           l-20 8
+           a4 4 0 0 1 -5 -5
+           l7 -20
+           a44 44 0 0 1 6 -45 Z"
+        fill="#FFFFFF"/>
+
+  <circle cx="94" cy="120" r="6" fill="#1E2A78"/>
+  <circle cx="118" cy="120" r="6" fill="#1E2A78"/>
+  <circle cx="142" cy="120" r="6" fill="#1E2A78"/>
+
+  <g stroke="#39D98A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M150 168 L172 146 L188 162 L214 132"/>
+    <path d="M198 132 L214 132 L214 148"/>
+  </g>
+</svg>
